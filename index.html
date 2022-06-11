@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aida Countdown</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <h1>Aida Countdown</h1>
+      {{ nowTime }}
+      <span v-if="isRun" class="run">進行中</span>
+      <div class="list">
+        <p>年:</p>
+        <select class="form-select" v-model="year">
+          <option selected>選擇年</option>
+          <option  :value="2022" >2022</option>
+          <option  :value="2023" >2023</option>
+          <option  :value="2024" >2024</option>
+        </select>
+      </div>
+      <div class="list">
+        <p>月:</p>
+        <select class="form-select" v-model="month">
+          <option selected>選擇月</option>
+          <option v-for="item in 12" :value="item-1" :key="`month-${item}`">{{item}}</option>
+        </select>
+      </div>
+      <div class="list">
+        <p>日:</p>
+        <select class="form-select" v-model="date">
+          <option selected>選擇小時數</option>
+          <option v-for="item in 31" :value="item" :key="`date-${item}`">{{item}}</option>
+        </select>
+      </div>
+      <div class="list">
+        <p>時:</p>
+        <select class="form-select" v-model="hour">
+          <option selected>選擇小時數</option>
+          <option v-for="item in 24" :value="item" :key="`hour-${item}`">{{item}}</option>
+        </select>
+      </div>
+      <div class="list">
+        <p>分:</p>
+        <select class="form-select" v-model="mins">
+          <option selected>選擇分數</option>
+          <option v-for="item in 60" :value="item">{{item}}</option>
+        </select>
+      </div>
+      <button @click="setDay">新增時簡表</button>
+      <div v-for="(time, index) in setTimeAry">{{`${index+1}`}} : {{ time }}</div>
+      <button @click="run">開始並播放</button>
+      <button @click="pause">停止</button>
+      <div class="footer">
+        <p>Designed by Jess馬豪</p>
+        <p>E-mail:jess1104@hotmail.com.tw</p>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script src="./app.js"></script>
+</body>
+
+</html>
+
+<style>
+  .list {
+    display: flex;
+    align-items: baseline;
+  }
+  select {
+    margin-left: 10px;
+  }
+  .run {
+    color: green;
+  }
+  .footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
