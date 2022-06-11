@@ -53,7 +53,7 @@
           <option v-for="item in 60" :value="item">{{item}}</option>
         </select>
       </div>
-      <button @click="setDay">新增時簡表</button>
+      <button @click="setDay">新增時間表</button>
       <div v-for="(time, index) in setTimeAry">{{`${index+1}`}} : {{ time }}</div>
       <button @click="run">開始並播放</button>
       <button @click="pause">停止</button>
